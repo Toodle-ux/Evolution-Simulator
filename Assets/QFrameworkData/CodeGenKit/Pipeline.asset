@@ -20,10 +20,10 @@ MonoBehaviour:
     NameToFullName: []
     BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: PlayerController
+    ClassName: GodLevelEditor
     Namespace: EvolutionSimulator
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace EvolutionSimulator\r\n{\r\n\tpublic
-      partial class PlayerController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class GodLevelEditor : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:41029267-7790-44c1-bf24-4c23836efce4\r\nusing UnityEngine;\r\n\r\nnamespace
-      EvolutionSimulator\r\n{\r\n\tpublic partial class PlayerController\r\n\t{\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:8b988581-0bf1-4140-9827-9fc069ba0e40\r\nusing UnityEngine;\r\n\r\nnamespace
+      EvolutionSimulator\r\n{\r\n\tpublic partial class GodLevelEditor\r\n\t{\r\n\r\n\t}\r\n}\r\n"
