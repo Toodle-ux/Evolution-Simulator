@@ -536,9 +536,15 @@ MonoBehaviour:
   GeneratePrefab: 0
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
+  grid: {fileID: 1543353671}
   GodTerrain: {fileID: 1365764871}
   CreatureTerrain: {fileID: 1216792220}
   GrassTile: {fileID: 11400000, guid: 88451bf14c49ce242b59c66fd98ae0a8, type: 2}
+  SandTile: {fileID: 11400000, guid: 2c8c49be3f26fe54aa036dcf44c28f38, type: 2}
+  GodXOffset: -11
+  GodYOffset: -6
+  CreatureXOffset: 1
+  CreatureYOffset: -6
 --- !u!1 &1365764868
 GameObject:
   m_ObjectHideFlags: 0
