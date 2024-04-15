@@ -332,6 +332,7 @@ MonoBehaviour:
   GeneratePrefab: 0
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
+  grid: {fileID: 1543353671}
 --- !u!1 &1216792217
 GameObject:
   m_ObjectHideFlags: 0

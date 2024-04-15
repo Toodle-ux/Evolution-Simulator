@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EvolutionSimulator.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/CreatureWins.unity
+    guid: 6bdbae9c13a9e8446b0700e91f40d11a
+  - enabled: 1
+    path: Assets/Scenes/GodWins.unity
+    guid: 4a3ab0822e09a5746be771d089afcc1c
   m_configObjects: {}
