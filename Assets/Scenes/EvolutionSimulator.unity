@@ -542,6 +542,7 @@ MonoBehaviour:
   CreatureTerrain: {fileID: 1216792220}
   GrassTile: {fileID: 11400000, guid: 88451bf14c49ce242b59c66fd98ae0a8, type: 2}
   SandTile: {fileID: 11400000, guid: 2c8c49be3f26fe54aa036dcf44c28f38, type: 2}
+  WaterTile: {fileID: 11400000, guid: 2e510a32d205eee4ebc6fc64b6f223af, type: 2}
   GodXOffset: -11
   GodYOffset: -6
   CreatureXOffset: 1

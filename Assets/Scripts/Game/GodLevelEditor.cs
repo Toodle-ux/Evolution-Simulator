@@ -14,6 +14,7 @@ namespace EvolutionSimulator
 		
 		public TileBase GrassTile;
 		public TileBase SandTile;
+		public TileBase WaterTile;
 
 		public EasyGrid<GridData> gridDatas;
 
@@ -52,15 +53,50 @@ namespace EvolutionSimulator
             Vector3Int gridDataPos = new Vector3Int(cellPosition.x - GodXOffset, cellPosition.y - GodYOffset);
 			Vector3Int creatureCellPosition = new Vector3Int(cellPosition.x - GodXOffset + CreatureXOffset, cellPosition.y - GodYOffset + CreatureYOffset);
 
-			// change the terrain to sand
-			if (Input.GetKeyDown(KeyCode.Mouse0))
+			// change the tool
+			if (Input.GetKeyDown(KeyCode.Alpha1))
+			{
+				Global.CurrentTool.Value = "Grass";
+			}
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Global.CurrentTool.Value = "Sand";
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Global.CurrentTool.Value = "Water";
+            }
+
+            // change the terrain based on which tool you're using
+            if (Input.GetKeyDown(KeyCode.Mouse0))
 			{
 				if (cellPosition.x < -1 && cellPosition.x >= -11 && cellPosition.y < 6 && cellPosition.y >= -6) 
 				{
-					GodTerrain.SetTile(cellPosition, SandTile);
-					gridDatas[gridDataPos.x, gridDataPos.y].TerrainState = TerrainStates.Sand;
+					if (Global.CurrentTool.Value == "Sand")
+					{
+                        GodTerrain.SetTile(cellPosition, SandTile);
+                        gridDatas[gridDataPos.x, gridDataPos.y].TerrainState = TerrainStates.Sand;
 
-					CreatureTerrain.SetTile(creatureCellPosition, SandTile);
+                        CreatureTerrain.SetTile(creatureCellPosition, SandTile);
+                    } 
+					else if (Global.CurrentTool.Value == "Grass")
+					{
+                        GodTerrain.SetTile(cellPosition, GrassTile);
+                        gridDatas[gridDataPos.x, gridDataPos.y].TerrainState = TerrainStates.Grass;
+
+                        CreatureTerrain.SetTile(creatureCellPosition, GrassTile);
+                    } 
+					else if (Global.CurrentTool.Value == "Water")
+					{
+                        GodTerrain.SetTile(cellPosition, WaterTile);
+                        gridDatas[gridDataPos.x, gridDataPos.y].TerrainState = TerrainStates.Water;
+
+                        CreatureTerrain.SetTile(creatureCellPosition, WaterTile);
+                    }
+					
+
 				}
 			}
         }
