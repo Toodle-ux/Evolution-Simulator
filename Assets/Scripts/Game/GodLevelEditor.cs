@@ -16,6 +16,8 @@ namespace EvolutionSimulator
 		public TileBase SandTile;
 		public TileBase WaterTile;
 
+		public RuleTile GrassRuleTile;
+
 		public EasyGrid<GridData> gridDatas;
 
 		public int GodXOffset = -11;
@@ -83,7 +85,7 @@ namespace EvolutionSimulator
                     } 
 					else if (Global.CurrentTool.Value == "Grass")
 					{
-                        GodTerrain.SetTile(cellPosition, GrassTile);
+                        GodTerrain.SetTile(cellPosition, GrassRuleTile);
                         gridDatas[gridDataPos.x, gridDataPos.y].TerrainState = TerrainStates.Grass;
 
                         CreatureTerrain.SetTile(creatureCellPosition, GrassTile);
