@@ -8,15 +8,18 @@ namespace EvolutionSimulator
 	public partial class GodLevelEditor : ViewController
 	{
 		public Grid grid;
-		
-		public Tilemap GodTerrain;
-		public Tilemap CreatureTerrain;
-		
-		public TileBase GrassTile;
-		public TileBase SandTile;
-		public TileBase WaterTile;
 
+		public Tilemap GodTerrainWater;
+		public Tilemap GodTerrainGrass;
+		public Tilemap GodTerrainSand;
+
+		public Tilemap CreatureTerrainWater;
+		public Tilemap CreatureTerrainGrass;
+		public Tilemap CreatureTerrainSand;
+		
+		public TileBase WaterTile;
 		public RuleTile GrassRuleTile;
+		public RuleTile SandRuleTile;
 
 		public EasyGrid<GridData> gridDatas;
 
@@ -38,14 +41,11 @@ namespace EvolutionSimulator
 			gridDatas.ForEach((x, y, _) =>
 			{
 				gridDatas[x, y] = new GridData();
-				
-				var godTilePos = new Vector3Int(x + GodXOffset, y + GodYOffset);
-				GodTerrain.SetTile(godTilePos, GrassTile);
 
-				var creatureTilePos = new Vector3Int(x + CreatureXOffset, y + CreatureYOffset);
-				CreatureTerrain.SetTile(creatureTilePos, GrassTile);
 			});
-		}
+
+            DrawTerrain();
+        }
 
         private void Update()
         {
@@ -78,29 +78,54 @@ namespace EvolutionSimulator
 				{
 					if (Global.CurrentTool.Value == "Sand")
 					{
-                        GodTerrain.SetTile(cellPosition, SandTile);
                         gridDatas[gridDataPos.x, gridDataPos.y].TerrainState = TerrainStates.Sand;
-
-                        CreatureTerrain.SetTile(creatureCellPosition, SandTile);
                     } 
 					else if (Global.CurrentTool.Value == "Grass")
 					{
-                        GodTerrain.SetTile(cellPosition, GrassRuleTile);
                         gridDatas[gridDataPos.x, gridDataPos.y].TerrainState = TerrainStates.Grass;
-
-                        CreatureTerrain.SetTile(creatureCellPosition, GrassTile);
                     } 
 					else if (Global.CurrentTool.Value == "Water")
 					{
-                        GodTerrain.SetTile(cellPosition, WaterTile);
                         gridDatas[gridDataPos.x, gridDataPos.y].TerrainState = TerrainStates.Water;
-
-                        CreatureTerrain.SetTile(creatureCellPosition, WaterTile);
                     }
-					
 
+					DrawTerrain();
 				}
 			}
+        }
+
+        void DrawTerrain()
+        {
+            gridDatas.ForEach((x, y, _) =>
+            {
+				var godTilePos = new Vector3Int(x + GodXOffset, y + GodYOffset);
+                var creatureTilePos = new Vector3Int(x + CreatureXOffset, y + CreatureYOffset);
+
+                GodTerrainWater.SetTile(godTilePos, WaterTile);
+                CreatureTerrainWater.SetTile(creatureTilePos, WaterTile);
+
+                if (gridDatas[x, y].TerrainState == TerrainStates.Grass || gridDatas[x, y].TerrainState == TerrainStates.Sand)
+				{
+					GodTerrainGrass.SetTile(godTilePos, GrassRuleTile);
+					CreatureTerrainGrass.SetTile(creatureTilePos, GrassRuleTile);
+				} 
+				else
+				{
+                    GodTerrainGrass.SetTile(godTilePos, null);
+                    CreatureTerrainGrass.SetTile(creatureTilePos, null);
+                }
+
+				if (gridDatas[x, y].TerrainState == TerrainStates.Sand)
+				{
+					GodTerrainSand.SetTile(godTilePos, SandRuleTile);
+					CreatureTerrainSand.SetTile(creatureTilePos, SandRuleTile);
+				}
+				else
+				{
+                    GodTerrainSand.SetTile(godTilePos, null);
+                    CreatureTerrainSand.SetTile(creatureTilePos, null);
+                }
+            });
         }
     }
 }

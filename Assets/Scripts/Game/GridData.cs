@@ -6,7 +6,7 @@ namespace EvolutionSimulator
 {
     public class GridData
     {
-        public TerrainStates TerrainState { get; set; } = TerrainStates.Grass;
+        public TerrainStates TerrainState { get; set; } = TerrainStates.Water;
     }
 }
 
