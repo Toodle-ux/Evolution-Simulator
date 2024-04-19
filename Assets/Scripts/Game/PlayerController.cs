@@ -7,6 +7,8 @@ namespace EvolutionSimulator
 	public partial class PlayerController : ViewController
 	{
         public Grid grid;
+
+        public Sprite RoundBody;
         
         private float healthMax = 100;
         private float currentHealth = 100;
@@ -30,8 +32,34 @@ namespace EvolutionSimulator
             GUILayout.EndHorizontal();
         }
 
+        private void Start()
+        {
+            UpdateFeature();
+            
+            Global.CurrentHead.Register(onValueChanged =>
+            {
+
+            }).UnRegisterWhenGameObjectDestroyed(this);
+        }
+
         private void Update()
         {
+            // TODO: Change the creature
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                
+            }
+
             // calculate the speed
             Vector3Int cellPosition = grid.WorldToCell(transform.position);
             Vector3Int gridDataPos = new Vector3Int(cellPosition.x - 1, cellPosition.y + 6);
@@ -95,6 +123,40 @@ namespace EvolutionSimulator
             if (currentHunger< 0f)
             {
                 SceneManager.LoadScene("GodWins");
+            }
+        }
+
+        void UpdateFeature()
+        {
+            switch (Global.CurrentHead.Value)
+            {
+                case Constant.FEATURE_NULL: 
+                    Head.sprite = null;
+                    break;
+            }
+
+            switch (Global.CurrentEyes.Value)
+            {
+                case Constant.FEATURE_NULL:
+                    Eyes.sprite = null;
+                    break;
+            }
+
+            switch (Global.CurrentLegs.Value)
+            {
+                case Constant.FEATURE_NULL:
+                    Legs.sprite = null;
+                    break;
+            }
+
+            switch (Global.CurrentBody.Value)
+            {
+                case Constant.FEATURE_NULL:
+                    Body.sprite = null;
+                    break;
+                case Constant.BODY_ROUND:
+                    Body.sprite = RoundBody;
+                    break;
             }
         }
     }

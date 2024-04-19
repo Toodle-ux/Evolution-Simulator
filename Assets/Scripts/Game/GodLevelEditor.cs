@@ -55,22 +55,6 @@ namespace EvolutionSimulator
             Vector3Int gridDataPos = new Vector3Int(cellPosition.x - GodXOffset, cellPosition.y - GodYOffset);
 			Vector3Int creatureCellPosition = new Vector3Int(cellPosition.x - GodXOffset + CreatureXOffset, cellPosition.y - GodYOffset + CreatureYOffset);
 
-			// change the tool
-			if (Input.GetKeyDown(KeyCode.Alpha1))
-			{
-				Global.CurrentTool.Value = "Grass";
-			}
-
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                Global.CurrentTool.Value = "Sand";
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                Global.CurrentTool.Value = "Water";
-            }
-
             // change the terrain based on which tool you're using
             if (Input.GetKeyDown(KeyCode.Mouse0))
 			{

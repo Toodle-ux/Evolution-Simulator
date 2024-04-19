@@ -18,12 +18,30 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos: []
+    BindInfos:
+    - TypeName: SpriteRenderer
+      PathToRoot: Head
+      MemberName: Head
+    - TypeName: SpriteRenderer
+      PathToRoot: Head/Eyes
+      MemberName: Eyes
+    - TypeName: SpriteRenderer
+      PathToRoot: Limbs
+      MemberName: Limbs
+    - TypeName: SpriteRenderer
+      PathToRoot: Limbs/Legs
+      MemberName: Legs
+    - TypeName: SpriteRenderer
+      PathToRoot: Body
+      MemberName: Body
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: GodLevelEditor
+    ClassName: PlayerController
     Namespace: EvolutionSimulator
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace EvolutionSimulator\r\n{\r\n\tpublic
-      partial class GodLevelEditor : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class PlayerController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:8b988581-0bf1-4140-9827-9fc069ba0e40\r\nusing UnityEngine;\r\n\r\nnamespace
-      EvolutionSimulator\r\n{\r\n\tpublic partial class GodLevelEditor\r\n\t{\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:01ecd181-e920-45d0-b6f4-d8ae412e7c57\r\nusing UnityEngine;\r\n\r\nnamespace
+      EvolutionSimulator\r\n{\r\n\tpublic partial class PlayerController\r\n\t{\r\n\r\n\t\tpublic
+      SpriteRenderer Head;\r\n\r\n\t\tpublic SpriteRenderer Eyes;\r\n\r\n\t\tpublic
+      SpriteRenderer Limbs;\r\n\r\n\t\tpublic SpriteRenderer Legs;\r\n\r\n\t\tpublic
+      SpriteRenderer Body;\r\n\r\n\t}\r\n}\r\n"
