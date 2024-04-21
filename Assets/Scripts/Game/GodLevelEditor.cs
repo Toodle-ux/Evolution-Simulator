@@ -48,7 +48,24 @@ namespace EvolutionSimulator
 			gridDatas.ForEach((x, y, _) =>
 			{
 				gridDatas[x, y] = new GridData();
+				Vector3Int godPos = new Vector3Int(x + GodXOffset,y + GodYOffset);
 
+				var sandTile = GodTerrainSand.GetTile(godPos);
+				var grassTile = GodTerrainGrass.GetTile(godPos);
+				var waterTile = GodTerrainWater.GetTile(godPos);
+
+				if (sandTile != null)
+				{
+					gridDatas[x, y].TerrainState = TerrainStates.Sand;
+				} 
+				else if(grassTile != null)
+				{
+                    gridDatas[x, y].TerrainState = TerrainStates.Grass;
+                }
+				else
+				{
+					gridDatas[x,y].TerrainState= TerrainStates.Water;
+				}
 			});
 
             DrawTerrain();
