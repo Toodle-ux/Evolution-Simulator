@@ -20,10 +20,10 @@ MonoBehaviour:
     NameToFullName: []
     BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: EvolutionEditor
+    ClassName: GrassPlant
     Namespace: EvolutionSimulator
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace EvolutionSimulator\r\n{\r\n\tpublic
-      partial class EvolutionEditor : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class GrassPlant : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:d8ee0d90-220e-47c8-9a57-078e0b019c15\r\nusing UnityEngine;\r\n\r\nnamespace
-      EvolutionSimulator\r\n{\r\n\tpublic partial class EvolutionEditor\r\n\t{\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:fd879e29-3a42-4582-a273-06a63eaca1e9\r\nusing UnityEngine;\r\n\r\nnamespace
+      EvolutionSimulator\r\n{\r\n\tpublic partial class GrassPlant\r\n\t{\r\n\r\n\t}\r\n}\r\n"

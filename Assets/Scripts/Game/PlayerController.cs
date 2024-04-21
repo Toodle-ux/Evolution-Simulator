@@ -15,9 +15,11 @@ namespace EvolutionSimulator
         private float healthMax = 100;
         private float currentHealth = 100;
 
-        private float hungerMax = 100;
-        private float currentHunger = 100;
+        public float hungerMax = 100;
+        public float currentHunger = 100;
         private float deltaHunger = 1;
+
+        private float timer = 300;
         
         private float speed = 5.0f;
         private float baseSpeed = 5.0f;
@@ -38,6 +40,12 @@ namespace EvolutionSimulator
             GUILayout.BeginHorizontal();
             GUILayout.Space(320);
             GUILayout.Label("Hunger:" + currentHunger + "/" + hungerMax);
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(320);
+            GUILayout.Label("Timer:" + timer);
             GUILayout.EndHorizontal();
         }
 
@@ -87,10 +95,17 @@ namespace EvolutionSimulator
             // Hunger calculation
             currentHunger = currentHunger - deltaHunger * Time.deltaTime;
 
+            timer = timer - Time.deltaTime;
+
             // End game
             if (currentHunger< 0f)
             {
                 SceneManager.LoadScene("GodWins");
+            }
+
+            if (timer < 0f)
+            {
+                SceneManager.LoadScene("CreatureWins");
             }
         }
 

@@ -13,17 +13,23 @@ namespace EvolutionSimulator
 		public Tilemap GodTerrainGrass;
 		public Tilemap GodTerrainSand;
 		public Tilemap GodEnlightenment;
+		public Tilemap GodPlant;
+		public Tilemap GodFood;
 
 		public Tilemap CreatureTerrainWater;
 		public Tilemap CreatureTerrainGrass;
 		public Tilemap CreatureTerrainSand;
 		public Tilemap CreatureEnlightenment;
+		public Tilemap CreaturePlant;
+		public Tilemap CreatureFood;
 		
 		public TileBase WaterTile;
 		public RuleTile GrassRuleTile;
 		public RuleTile SandRuleTile;
 
 		public RuleTile EnlightenmentRuleTile;
+		public RuleTile GrassFoodRuleTile;
+		public RuleTile GrassPlantRuleTile;
 
 		public EasyGrid<GridData> gridDatas;
 
@@ -61,6 +67,7 @@ namespace EvolutionSimulator
 				else if(grassTile != null)
 				{
                     gridDatas[x, y].TerrainState = TerrainStates.Grass;
+					gridDatas[x, y].HasPlant = Random.value > 0.9f ? true: false;
                 }
 				else
 				{
@@ -69,17 +76,19 @@ namespace EvolutionSimulator
 			});
 
             DrawTerrain();
+			//InitiateFood();
+			InitiatePlants();
 
 
 			for (int i = 0; i < EnlightenmentCount; i++)
 			{
 
 				int x = Random.value > 0.5f ?
-					Random.Range(1, 5):
-					Random.Range(7,10);
+					Random.Range(1, 4):
+					Random.Range(8,10);
 				int y = Random.value > 0.5f ?
-                    Random.Range(1, 6) :
-                    Random.Range(8, 12);
+                    Random.Range(1, 5) :
+                    Random.Range(9, 12);
 
 				Debug.Log((x,y));
 
@@ -94,6 +103,11 @@ namespace EvolutionSimulator
 			Global.EvolutionCount.Register(onValueChanged =>
 			{
 				InitiateEnlightenment();
+			}).UnRegisterWhenGameObjectDestroyed(this);
+
+			Global.FoodCount.Register(onValueChanged =>
+			{
+				InitiateFood();
 			}).UnRegisterWhenGameObjectDestroyed(this);
 
         }
@@ -173,14 +187,9 @@ namespace EvolutionSimulator
 
                 if (gridDatas[x,y].HasEnlightenment)
 				{
-
-                    
-
 					GodEnlightenment.SetTile(godPos, EnlightenmentRuleTile);
 					CreatureEnlightenment.SetTile(creaturePos, EnlightenmentRuleTile);
 
-                    //Instantiate(EnlightenmentObj, godPos, Quaternion.identity);
-                    //Instantiate(EnlightenmentObj, creaturePos, Quaternion.identity);
                 }
 				else
 				{
@@ -189,8 +198,54 @@ namespace EvolutionSimulator
                 }
 
             });
+        }
 
-			Debug.Log("Initiated");
+        private void InitiateFood()
+        {
+            gridDatas.ForEach((x, y, _) =>
+            {
+
+                Vector3Int godPos = new Vector3Int(x + GodXOffset, y + GodYOffset);
+                Vector3Int creaturePos = new Vector3Int(x + CreatureXOffset, y + CreatureYOffset);
+
+                if (gridDatas[x, y].HasFood)
+                {
+
+                    GodFood.SetTile(godPos, GrassFoodRuleTile);
+                    CreatureFood.SetTile(creaturePos, GrassFoodRuleTile);
+
+                }
+                else
+                {
+                    GodFood.SetTile(godPos, null);
+                    CreatureFood.SetTile(creaturePos, null);
+                }
+
+            });
+        }
+
+		private void InitiatePlants()
+		{
+            gridDatas.ForEach((x, y, _) =>
+            {
+
+                Vector3Int godPos = new Vector3Int(x + GodXOffset, y + GodYOffset);
+                Vector3Int creaturePos = new Vector3Int(x + CreatureXOffset, y + CreatureYOffset);
+
+                if (gridDatas[x, y].HasPlant)
+                {
+
+                    GodPlant.SetTile(godPos, GrassPlantRuleTile);
+                    CreaturePlant.SetTile(creaturePos, GrassPlantRuleTile);
+
+                }
+                else
+                {
+                    GodPlant.SetTile(godPos, null);
+                    CreaturePlant.SetTile(creaturePos, null);
+                }
+
+            });
         }
     }
 }

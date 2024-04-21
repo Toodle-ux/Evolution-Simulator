@@ -18,6 +18,8 @@ namespace EvolutionSimulator
         public static List<string> SelectableFeatures = new List<string>();
 
         public static BindableProperty<int> EvolutionCount = new BindableProperty<int>(0);
+        public static BindableProperty<int> FoodCount = new BindableProperty<int>(0);
+        public static BindableProperty<int> TreeCount = new BindableProperty<int>(0);
     }
 
     public class Constant
