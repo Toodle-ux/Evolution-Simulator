@@ -12,14 +12,18 @@ namespace EvolutionSimulator
 		public Tilemap GodTerrainWater;
 		public Tilemap GodTerrainGrass;
 		public Tilemap GodTerrainSand;
+		public Tilemap GodEnlightenment;
 
 		public Tilemap CreatureTerrainWater;
 		public Tilemap CreatureTerrainGrass;
 		public Tilemap CreatureTerrainSand;
+		public Tilemap CreatureEnlightenment;
 		
 		public TileBase WaterTile;
 		public RuleTile GrassRuleTile;
 		public RuleTile SandRuleTile;
+
+		public RuleTile EnlightenmentRuleTile;
 
 		public EasyGrid<GridData> gridDatas;
 
@@ -55,13 +59,12 @@ namespace EvolutionSimulator
 
 				int x = Random.value > 0.5f ?
 					Random.Range(1, 5):
-					Random.Range(7,11);
+					Random.Range(7,10);
 				int y = Random.value > 0.5f ?
                     Random.Range(1, 6) :
-                    Random.Range(8, 13);
+                    Random.Range(8, 12);
 
-				Debug.Log(x);
-				Debug.Log(y);
+				Debug.Log((x,y));
 
 				if (gridDatas[x, y] != null)
 				{
@@ -70,6 +73,11 @@ namespace EvolutionSimulator
 			}
 
 			InitiateEnlightenment();
+
+			Global.EvolutionCount.Register(onValueChanged =>
+			{
+				InitiateEnlightenment();
+			}).UnRegisterWhenGameObjectDestroyed(this);
 
         }
 
@@ -142,17 +150,30 @@ namespace EvolutionSimulator
         {
             gridDatas.ForEach((x, y, _) =>
             {
+
+                Vector3Int godPos = new Vector3Int(x + GodXOffset, y + GodYOffset);
+                Vector3Int creaturePos = new Vector3Int(x + CreatureXOffset, y + CreatureYOffset);
+
                 if (gridDatas[x,y].HasEnlightenment)
 				{
 
-                    Vector3 godPos = new Vector3(x + GodXOffset, y + GodYOffset);
-                    Vector3 creaturePos = new Vector3(x + CreatureXOffset, y + CreatureYOffset);
+                    
 
-                    Instantiate(EnlightenmentObj, godPos, Quaternion.identity);
-                    Instantiate(EnlightenmentObj, creaturePos, Quaternion.identity);
+					GodEnlightenment.SetTile(godPos, EnlightenmentRuleTile);
+					CreatureEnlightenment.SetTile(creaturePos, EnlightenmentRuleTile);
+
+                    //Instantiate(EnlightenmentObj, godPos, Quaternion.identity);
+                    //Instantiate(EnlightenmentObj, creaturePos, Quaternion.identity);
+                }
+				else
+				{
+                    GodEnlightenment.SetTile(godPos, null);
+                    CreatureEnlightenment.SetTile(creaturePos, null);
                 }
 
             });
+
+			Debug.Log("Initiated");
         }
     }
 }
