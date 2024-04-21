@@ -18,30 +18,12 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos:
-    - TypeName: SpriteRenderer
-      PathToRoot: Head
-      MemberName: Head
-    - TypeName: SpriteRenderer
-      PathToRoot: Head/Eyes
-      MemberName: Eyes
-    - TypeName: SpriteRenderer
-      PathToRoot: Limbs
-      MemberName: Limbs
-    - TypeName: SpriteRenderer
-      PathToRoot: Limbs/Legs
-      MemberName: Legs
-    - TypeName: SpriteRenderer
-      PathToRoot: Body
-      MemberName: Body
+    BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: PlayerController
+    ClassName: EvolutionEditor
     Namespace: EvolutionSimulator
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace EvolutionSimulator\r\n{\r\n\tpublic
-      partial class PlayerController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class EvolutionEditor : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:01ecd181-e920-45d0-b6f4-d8ae412e7c57\r\nusing UnityEngine;\r\n\r\nnamespace
-      EvolutionSimulator\r\n{\r\n\tpublic partial class PlayerController\r\n\t{\r\n\r\n\t\tpublic
-      SpriteRenderer Head;\r\n\r\n\t\tpublic SpriteRenderer Eyes;\r\n\r\n\t\tpublic
-      SpriteRenderer Limbs;\r\n\r\n\t\tpublic SpriteRenderer Legs;\r\n\r\n\t\tpublic
-      SpriteRenderer Body;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:d8ee0d90-220e-47c8-9a57-078e0b019c15\r\nusing UnityEngine;\r\n\r\nnamespace
+      EvolutionSimulator\r\n{\r\n\tpublic partial class EvolutionEditor\r\n\t{\r\n\r\n\t}\r\n}\r\n"

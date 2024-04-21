@@ -14,6 +14,8 @@ namespace EvolutionSimulator
         public static BindableProperty<string> CurrentBody = new BindableProperty<string>(Constant.BODY_ROUND);
         public static BindableProperty<string> CurrentLegsType = new BindableProperty<string>(Constant.FEATURE_NULL);
         public static BindableProperty<int> CurrentLegsCount = new BindableProperty<int>(0);
+
+        public static List<string> SelectableFeatures = new List<string>();
     }
 
     public class Constant
@@ -35,6 +37,7 @@ namespace EvolutionSimulator
         
         public const int LEGS_FOUR = 4;
         public const string LEGS_LIMBS = "LimbsLegs";
+        public const string LEGS_THIN = "ThinLegs";
     }
 }
 

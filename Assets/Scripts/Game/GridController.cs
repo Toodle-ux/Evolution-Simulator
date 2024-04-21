@@ -9,6 +9,7 @@ namespace EvolutionSimulator
 		Sand,
 		Water
 	}
+
 	public partial class GridController : ViewController
 	{
 		public EasyGrid<GridData> GodTerrain = new EasyGrid<GridData>(10, 12);

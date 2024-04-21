@@ -29,6 +29,9 @@ namespace EvolutionSimulator
 		public int CreatureXOffset = 1;
 		public int CreatureYOffset = -6;
 
+		public int EnlightenmentCount = 5;
+		public GameObject EnlightenmentObj;
+
         public void Awake()
         {
             gridDatas = FindObjectOfType<GridController>().GodTerrain;
@@ -45,6 +48,29 @@ namespace EvolutionSimulator
 			});
 
             DrawTerrain();
+
+
+			for (int i = 0; i < EnlightenmentCount; i++)
+			{
+
+				int x = Random.value > 0.5f ?
+					Random.Range(1, 5):
+					Random.Range(7,11);
+				int y = Random.value > 0.5f ?
+                    Random.Range(1, 6) :
+                    Random.Range(8, 13);
+
+				Debug.Log(x);
+				Debug.Log(y);
+
+				if (gridDatas[x, y] != null)
+				{
+                    gridDatas[x, y].HasEnlightenment = true;
+                }
+			}
+
+			InitiateEnlightenment();
+
         }
 
         private void Update()
@@ -109,6 +135,23 @@ namespace EvolutionSimulator
                     GodTerrainSand.SetTile(godTilePos, null);
                     CreatureTerrainSand.SetTile(creatureTilePos, null);
                 }
+            });
+        }
+
+        private void InitiateEnlightenment()
+        {
+            gridDatas.ForEach((x, y, _) =>
+            {
+                if (gridDatas[x,y].HasEnlightenment)
+				{
+
+                    Vector3 godPos = new Vector3(x + GodXOffset, y + GodYOffset);
+                    Vector3 creaturePos = new Vector3(x + CreatureXOffset, y + CreatureYOffset);
+
+                    Instantiate(EnlightenmentObj, godPos, Quaternion.identity);
+                    Instantiate(EnlightenmentObj, creaturePos, Quaternion.identity);
+                }
+
             });
         }
     }

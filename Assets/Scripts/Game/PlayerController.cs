@@ -73,28 +73,7 @@ namespace EvolutionSimulator
 
         private void Update()
         {
-            // TODO: Change the creature
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                Global.CurrentEyes.Value = Constant.EYES_MEDIUM;
-            }
-
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                Global.CurrentEyes.Value = Constant.EYES_BIG;
-            }
-
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                Global.CurrentLegsType.Value = Constant.LEGS_LIMBS;
-                Global.CurrentLegsCount.Value = Constant.LEGS_FOUR;
-            }
-
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                Global.CurrentLegsType.Value = Constant.FEATURE_NULL;
-                Global.CurrentLegsCount.Value = 0;
-            }
+            
 
             // calculate the speed
             Vector3Int cellPosition = grid.WorldToCell(transform.position);
