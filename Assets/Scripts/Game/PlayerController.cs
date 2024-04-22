@@ -114,6 +114,7 @@ namespace EvolutionSimulator
             speedSandMod = 0.2f;
             speedGrassMod = 1;
             speedWaterMod = 0.5f;
+            hungerMax = 100f;
 
             mass = 1;
             limbStrength = 1;
@@ -142,6 +143,12 @@ namespace EvolutionSimulator
                 case Constant.FEATURE_NULL:
                     Eyes.sprite = null;
                     break;
+                case Constant.EYES_BIG:
+                    hungerMax += 10f;
+                    break;
+                case Constant.EYES_MEDIUM:
+                    hungerMax += 5f;
+                    break;
             }
 
             string current_eyes_sprite_path = "Features/" + Global.CurrentEyes.Value;
@@ -161,6 +168,10 @@ namespace EvolutionSimulator
                     break;
                 case Constant.LEGS_LIMBS:
                     deltaLimbStrength = 0.25f;
+                    break;
+                case Constant.LEGS_THIN:
+                    deltaLimbStrength = 0.5f;
+                    speedSandMod = 0.05f;
                     break;
             }
 
